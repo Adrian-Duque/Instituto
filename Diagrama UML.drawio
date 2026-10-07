@@ -1,0 +1,198 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="hDbIS7xUDlMYdhEI-VCR">
+    <mxGraphModel dx="1664" dy="1029" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="instituto" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="«main»&lt;br&gt;Instituto (main.cpp)" vertex="1">
+          <mxGeometry height="196" width="420" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="instituto_attr" parent="instituto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- usuarios: ListaGenerica&amp;lt;Usuario*&amp;gt;&lt;br&gt;- calculadora: Calculadora" vertex="1">
+          <mxGeometry height="42" width="420" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="instituto_line" parent="instituto" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="420" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="instituto_met" parent="instituto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ main(): int&lt;br&gt;&amp;nbsp; 1. Crea la lista de usuarios y un Administrador inicial (new)&lt;br&gt;&amp;nbsp; 2. Login por id → getRol()&lt;br&gt;&amp;nbsp; 3. Muestra el menú del rol y llama a sus métodos&lt;br&gt;&amp;nbsp; 4. try/catch de todas las excepciones&lt;br&gt;&amp;nbsp; 5. Al salir: delete de cada usuario" vertex="1">
+          <mxGeometry height="106" width="420" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="«abstract»&lt;br&gt;&lt;i&gt;Usuario&lt;/i&gt;" vertex="1">
+          <mxGeometry height="276" width="330" x="565" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario_attr" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# id: int&lt;br&gt;# nombre: string&lt;br&gt;# apellido: string&lt;br&gt;&lt;u&gt;- siguienteId: int&lt;/u&gt;" vertex="1">
+          <mxGeometry height="74" width="330" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario_line" parent="usuario" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="330" y="114" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario_met" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Usuario(nombre: string, apellido: string)&lt;br&gt;+ ~Usuario() {virtual}&lt;br&gt;+ getId(): int&lt;br&gt;+ getNombre(): string&lt;br&gt;+ getApellido(): string&lt;br&gt;+ setNombre(nombre: string): void&lt;br&gt;+ setApellido(apellido: string): void&lt;br&gt;&lt;i&gt;+ getRol(): string = 0&lt;/i&gt;&lt;br&gt;+ mostrarDatos(): void {virtual}" vertex="1">
+          <mxGeometry height="154" width="330" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="estudiante" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Estudiante" vertex="1">
+          <mxGeometry height="250" width="360" x="40" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="estudiante_attr" parent="estudiante" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- asignaturas: ListaGenerica&amp;lt;string&amp;gt;&lt;br&gt;- notas: ListaGenerica&amp;lt;float&amp;gt;&lt;br&gt;- mochila: ListaGenerica&amp;lt;Fichero&amp;gt;&lt;br&gt;- profesor: Profesor* = nullptr" vertex="1">
+          <mxGeometry height="74" width="360" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="estudiante_line" parent="estudiante" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="360" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="estudiante_met" parent="estudiante" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Estudiante(nombre: string, apellido: string)&lt;br&gt;+ getRol(): string&lt;br&gt;+ mostrarDatos(): void&lt;br&gt;+ ponerNota(asignatura: string, nota: float): void&lt;br&gt;+ cargarFichero(ruta: string): void&lt;br&gt;+ verMochila(): void&lt;br&gt;+ getProfesor(): Profesor*&lt;br&gt;+ setProfesor(p: Profesor*): void" vertex="1">
+          <mxGeometry height="138" width="360" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="profesor" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Profesor" vertex="1">
+          <mxGeometry height="186" width="380" x="540" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="profesor_attr" parent="profesor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- clase: ListaGenerica&amp;lt;Estudiante*&amp;gt;" vertex="1">
+          <mxGeometry height="26" width="380" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="profesor_line" parent="profesor" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="380" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="profesor_met" parent="profesor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Profesor(nombre: string, apellido: string)&lt;br&gt;+ getRol(): string&lt;br&gt;+ mostrarDatos(): void&lt;br&gt;+ inscribir(e: Estudiante*): void&lt;br&gt;+ desinscribir(id: int): void&lt;br&gt;+ ponerNota(id: int, asignatura: string, nota: float): void&lt;br&gt;+ verClase(): void" vertex="1">
+          <mxGeometry height="122" width="380" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="MmFKrIEt4kU2cDvz_gFw-1" edge="1" parent="1" source="admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" target="lista">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1570" y="485" />
+              <mxPoint x="1570" y="321" />
+              <mxPoint x="1540" y="321" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Administrador" vertex="1">
+          <mxGeometry height="170" width="520" x="1000" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_attr" parent="admin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="10" width="520" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_line" parent="admin" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="520" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_met" parent="admin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Administrador(nombre: string, apellido: string)&lt;br&gt;+ getRol(): string&lt;br&gt;+ darAlta(lista: ListaGenerica&amp;lt;Usuario*&amp;gt;&amp;amp;, rol: char, nombre: string, apellido: string): void&lt;br&gt;+ darBaja(lista: ListaGenerica&amp;lt;Usuario*&amp;gt;&amp;amp;, id: int): void&lt;br&gt;+ modificarDatos(lista: ListaGenerica&amp;lt;Usuario*&amp;gt;&amp;amp;, id: int, nombre: string, apellido: string): void" vertex="1">
+          <mxGeometry height="122" width="520" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="fichero" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Fichero" vertex="1">
+          <mxGeometry height="154" width="280" x="40" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="fichero_attr" parent="fichero" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- ruta: string&lt;br&gt;- contenido: string" vertex="1">
+          <mxGeometry height="42" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fichero_line" parent="fichero" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="fichero_met" parent="fichero" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Fichero()&lt;br&gt;+ Fichero(ruta: string)&lt;br&gt;+ cargar(): void {lanza runtime_error}&lt;br&gt;+ mostrar(): void" vertex="1">
+          <mxGeometry height="74" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lista" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="ListaGenerica&amp;lt;T&amp;gt;" vertex="1">
+          <mxGeometry height="202" width="300" x="1390" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lista_attr" parent="lista" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- almacen: T[50]&lt;br&gt;- count: int" vertex="1">
+          <mxGeometry height="42" width="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lista_line" parent="lista" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="300" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="lista_met" parent="lista" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ ListaGenerica()&lt;br&gt;+ add(nuevo: T): void&lt;br&gt;+ remove(): T&lt;br&gt;+ eliminar(posicion: int): T&lt;br&gt;+ length(): int&lt;br&gt;+ at(posicion: int): T&lt;br&gt;+ recorrer(): void" vertex="1">
+          <mxGeometry height="122" width="300" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="matriz" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Matriz&amp;lt;T&amp;gt;" vertex="1">
+          <mxGeometry height="314" width="330" x="1050" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="matriz_attr" parent="matriz" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- datos: T[MAX_DIM][MAX_DIM]&lt;br&gt;- filas: int&lt;br&gt;- columnas: int" vertex="1">
+          <mxGeometry height="58" width="330" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="matriz_line" parent="matriz" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="330" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="matriz_met" parent="matriz" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Matriz()&lt;br&gt;+ Matriz(filas: int, columnas: int)&lt;br&gt;+ set(i: int, j: int, valor: T): void&lt;br&gt;+ get(i: int, j: int): T&lt;br&gt;+ getFilas(): int&lt;br&gt;+ getColumnas(): int&lt;br&gt;+ imprimir(): void&lt;br&gt;+ sumar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ restar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ multiplicar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ dividir(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ traspuesta(): Matriz&amp;lt;T&amp;gt; {opcional}&lt;br&gt;+ determinante(): T {opcional}" vertex="1">
+          <mxGeometry height="218" width="330" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="calc" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Calculadora" vertex="1">
+          <mxGeometry height="154" width="520" x="410" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_attr" parent="calc" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="10" width="520" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_line" parent="calc" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="520" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_met" parent="calc" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ sumar(a: double, b: double): double&lt;br&gt;+ restar(a: double, b: double): double&lt;br&gt;+ multiplicar(a: double, b: double): double&lt;br&gt;+ dividir(a: double, b: double): double {lanza si b = 0}&lt;br&gt;+ operarMatrices(a: const Matriz&amp;lt;double&amp;gt;&amp;amp;, b: const Matriz&amp;lt;double&amp;gt;&amp;amp;, op: char): Matriz&amp;lt;double&amp;gt;" vertex="1">
+          <mxGeometry height="106" width="520" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_usuarios" edge="1" parent="1" source="instituto" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.765;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="usuario" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_usuarios_l1" connectable="0" parent="comp_usuarios" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="comp_usuarios_l2" connectable="0" parent="comp_usuarios" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="usuarios&lt;br&gt;0..*" vertex="1">
+          <mxGeometry relative="1" x="0.4" as="geometry">
+            <mxPoint y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_inst_lista" edge="1" parent="1" source="instituto" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="lista" value="«usa»">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="15" />
+              <mxPoint x="1540" y="15" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_inst_calc" edge="1" parent="1" source="instituto" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="calc" value="«usa»">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="138.06" />
+              <mxPoint x="20" y="930.06" />
+              <mxPoint x="670" y="930.06" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gen_est" edge="1" parent="1" source="estudiante" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="usuario" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen_prof" edge="1" parent="1" source="profesor" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="usuario" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen_admin" edge="1" parent="1" source="admin" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="usuario" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_mochila" edge="1" parent="1" source="estudiante" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.389;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="fichero" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_mochila_l1" connectable="0" parent="comp_mochila" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <mxPoint x="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="comp_mochila_l2" connectable="0" parent="comp_mochila" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="mochila&lt;br&gt;0..*" vertex="1">
+          <mxGeometry relative="1" x="0.5" as="geometry">
+            <mxPoint x="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agr_clase" edge="1" parent="1" source="profesor" style="endArrow=none;startArrow=diamondThin;startFill=0;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.67;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="estudiante" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agr_clase_l1" connectable="0" parent="agr_clase" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="profesor&lt;br&gt;0..1" vertex="1">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <mxPoint y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agr_clase_l2" connectable="0" parent="agr_clase" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="clase&lt;br&gt;0..*" vertex="1">
+          <mxGeometry relative="1" x="0.6" as="geometry">
+            <mxPoint y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_gestiona" edge="1" parent="1" source="admin" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="usuario" value="«gestiona»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_matriz" edge="1" parent="1" source="calc" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.317;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="matriz" value="«usa»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
