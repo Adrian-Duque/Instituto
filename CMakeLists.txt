@@ -7,4 +7,9 @@ add_executable(Instituto Main.cpp
         Matriz.cpp
         Matriz.h
         Administrador.cpp
-        Administrador.h)
+        Administrador.h
+        Fichero.cpp
+        Fichero.h
+        Estudiante.cpp
+        Estudiante.h
+)

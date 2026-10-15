@@ -1,0 +1,4 @@
+Actividad 1 - Programacion con Estructuras Lineales
+Tema: Listas genericas con plantillas
+Entregado: 12/10/2026
+Nota obtenida: 8.5
