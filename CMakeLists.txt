@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 23)
 add_executable(Instituto Main.cpp
         Matriz.cpp
         Matriz.h
-        Main.cpp
-        Main.cpp)
+        Administrador.cpp
+        Administrador.h)
