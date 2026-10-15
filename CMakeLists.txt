@@ -3,7 +3,9 @@ project(Instituto)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Instituto main.cpp
+add_executable(Instituto Main.cpp
+        Matriz.cpp
+        Matriz.h
         Administrador.cpp
         Administrador.h
         Profesor.cpp
