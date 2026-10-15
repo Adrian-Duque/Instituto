@@ -16,8 +16,8 @@ public:
     Profesor(std::string nombre, std::string apellido);
 
     // Métodos heredados de Usuario
-    std::string getRol() override;
-    void mostrarDatos() override;
+    std::string getRol();
+    void mostrarDatos();
 
     // Métodos de profesor 
     void inscribir(Estudiante* e);

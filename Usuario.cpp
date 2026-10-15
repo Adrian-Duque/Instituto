@@ -8,11 +8,6 @@ Usuario::Usuario(std::string nombre, std::string apellido) {
     this->nombre = nombre;
     this->apellido = apellido;
 }
-
-Usuario::~Usuario() {
-    // Destructor virtual por defecto
-}
-
 int Usuario::getId() const {
     return id;
 }
@@ -32,7 +27,9 @@ void Usuario::setNombre(std::string nombre) {
 void Usuario::setApellido(std::string apellido) {
     this->apellido = apellido;
 }
-
+std::string Usuario::getRol() {
+    return "Usuario";
+}
 void Usuario::mostrarDatos() {
     std::cout << "ID: " << id << " | Nombre: " << nombre << " " << apellido << std::endl;
 }

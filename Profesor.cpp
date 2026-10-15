@@ -10,7 +10,8 @@ std::string Profesor::getRol() {
 }
 
 void Profesor::mostrarDatos() {
-    std::cout << "Profesor ID: " << id << " - Nombre: " << nombre << " " << apellido << std::endl;
+    std::cout << "[Profesor] "<< std::endl;
+    Usuario::mostrarDatos();
 }
 
 void Profesor::inscribir(Estudiante* e) {
@@ -32,7 +33,7 @@ void Profesor::desinscribir(int id) {
         Estudiante* e = clase.at(i);
         if (e->getid() == id) {
             e->setProfesor(nullptr);
-            clase.eliminate(i); // O el método correspondiente para eliminar por posición en tu ListaGenerica
+            clase.eliminar(i);
             encontrado = true;
             break;
         }

@@ -11,7 +11,6 @@ protected:
     static int siguienteId; // Para que el id sea único
 public:
     Usuario(std::string nombre, std::string apellido);
-    virtual ~Usuario(); // Destructor virtual
 
     int getId() const;
     std::string getNombre() const;
@@ -20,8 +19,8 @@ public:
     void setNombre(std::string nombre);
     void setApellido(std::string apellido);
 
-    virtual std::string getRol() = 0;       // Virtual pura
-    virtual void mostrarDatos();            // Virtual
+    std::string getRol();
+    void mostrarDatos();
 };
 
 #endif // USUARIO_H
