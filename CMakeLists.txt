@@ -3,8 +3,8 @@ project(Instituto)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Instituto Instituto.cpp
+add_executable(Instituto Main.cpp
         Matriz.cpp
         Matriz.h
-        Instituto.cpp
-        Instituto.cpp)
+        Main.cpp
+        Main.cpp)
