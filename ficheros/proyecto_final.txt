@@ -1,0 +1,5 @@
+Proyecto final - Sistema de administracion academico
+Grupo: 3
+Descripcion: aplicacion de consola en C++ para gestionar estudiantes,
+profesores y usuarios de un centro de formacion profesional.
+Estado: entregado

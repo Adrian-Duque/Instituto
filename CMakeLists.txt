@@ -13,4 +13,8 @@ add_executable(Instituto Main.cpp
         Usuario.cpp
         Usuario.h
         ListaGenerica.h
+        Fichero.cpp
+        Fichero.h
+        Estudiante.cpp
+        Estudiante.h
 )

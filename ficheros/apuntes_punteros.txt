@@ -1,0 +1,5 @@
+Apuntes - Punteros y referencias
+- Un puntero guarda una direccion de memoria (operador &).
+- Con * se accede al valor al que apunta.
+- nullptr indica que el puntero no apunta a nada.
+- Todo lo que se crea con new hay que liberarlo con delete.

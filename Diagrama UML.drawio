@@ -1,6 +1,6 @@
-<mxfile host="drawio-plugin" modified="2026-10-13T17:20:34.675Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="22.1.22" etag="YBYiM73wpHveA8QtBRaL" type="embed">
+<mxfile host="drawio-plugin" modified="2026-10-15T09:40:52.882Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" etag="3yb99CojmmX6ULuDmhix" version="22.1.22" type="embed">
   <diagram name="Page-1" id="hDbIS7xUDlMYdhEI-VCR">
-    <mxGraphModel dx="927" dy="932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1276" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -27,6 +27,19 @@
         </mxCell>
         <mxCell id="usuario_met" value="+ Usuario(nombre: string, apellido: string)&lt;br&gt;+ ~Usuario() {virtual}&lt;br&gt;+ getId(): int&lt;br&gt;+ getNombre(): string&lt;br&gt;+ getApellido(): string&lt;br&gt;+ setNombre(nombre: string): void&lt;br&gt;+ setApellido(apellido: string): void&lt;br&gt;&lt;i&gt;+ getRol(): string = 0&lt;/i&gt;&lt;br&gt;+ mostrarDatos(): void {virtual}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="usuario" vertex="1">
           <mxGeometry y="122" width="330" height="154" as="geometry" />
+        </mxCell>
+        <mxCell id="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="estudiante" target="lista_met" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="370" />
+              <mxPoint x="1510" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4" value="&amp;lt;&amp;lt;Usa&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="2" vertex="1" connectable="0">
+          <mxGeometry x="-0.2266" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="estudiante" value="Estudiante" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="40" y="400" width="360" height="250" as="geometry" />
@@ -55,7 +68,7 @@
         <mxCell id="MmFKrIEt4kU2cDvz_gFw-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="admin" target="lista" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1570" y="485" />
+              <mxPoint x="1570" y="755" />
               <mxPoint x="1570" y="321" />
               <mxPoint x="1540" y="321" />
             </Array>
@@ -158,7 +171,12 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="gen_admin" value="" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="admin" target="usuario" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1066" y="360" />
+              <mxPoint x="730" y="360" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="comp_mochila" value="" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.389;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="estudiante" target="fichero" edge="1">
           <mxGeometry relative="1" as="geometry" />
