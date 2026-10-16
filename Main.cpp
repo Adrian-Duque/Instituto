@@ -94,6 +94,106 @@ Usuario *buscarUsuario(ListaGenerica<Usuario *> &lista, int id) {
     return nullptr;
 }
 
+Matriz<double> leerMatriz(string nombre) {
+    cout << "Matriz " << nombre << endl;
+    int filas = leerEntero("Numero de filas: ");
+    int columnas = leerEntero("Numero de columnas: ");
+
+    Matriz<double> m(filas, columnas);
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            cout << nombre << "[" << i << "][" << j << "] = ";
+            double valor = leerDecimal("");
+            m.set(i, j, valor);
+        }
+    }
+
+    return m;
+}
+
+void menuCalculadora() {
+    bool volver = false;
+
+    while (volver == false) {
+        cout << endl << "--- CALCULADORA ---" << endl;
+        cout << "1. Sumar" << endl;
+        cout << "2. Restar" << endl;
+        cout << "3. Multiplicar" << endl;
+        cout << "4. Dividir" << endl;
+        cout << "5. Operar con matrices" << endl;
+        cout << "0. Volver" << endl;
+
+        int opcion = leerEntero("Elige una opcion: ");
+
+        try {
+            switch (opcion) {
+                case 1: {
+                    double a = leerDecimal("Primer numero: ");
+                    double b = leerDecimal("Segundo numero: ");
+                    cout << "Resultado: " << sumar(a, b) << endl;
+                    break;
+                }
+
+                case 2: {
+                    double a = leerDecimal("Primer numero: ");
+                    double b = leerDecimal("Segundo numero: ");
+                    cout << "Resultado: " << restar(a, b) << endl;
+                    break;
+                }
+
+                case 3: {
+                    double a = leerDecimal("Primer numero: ");
+                    double b = leerDecimal("Segundo numero: ");
+                    cout << "Resultado: " << multiplicar(a, b) << endl;
+                    break;
+                }
+
+                case 4: {
+                    double a = leerDecimal("Primer numero: ");
+                    double b = leerDecimal("Segundo numero: ");
+                    cout << "Resultado: " << dividir(a, b) << endl;
+                    break;
+                }
+
+                case 5: {
+                    Matriz<double> a = leerMatriz("A");
+                    Matriz<double> b = leerMatriz("B");
+
+                    cout << "Operacion: 1 = Suma, 2 = Resta, 3 = Multiplicacion, 4 = Division" << endl;
+                    int tipo = leerEntero("Operacion: ");
+
+                    char op;
+                    if (tipo == 1) {
+                        op = '+';
+                    } else if (tipo == 2) {
+                        op = '-';
+                    } else if (tipo == 3) {
+                        op = '*';
+                    } else if (tipo == 4) {
+                        op = '/';
+                    } else {
+                        op = 'X';
+                    }
+
+                    cout << "Resultado:" << endl;
+                    operarMatrices(a, b, op).imprimir();
+                    break;
+                }
+
+                case 0:
+                    volver = true;
+                    break;
+
+                default:
+                    cout << "Opcion no valida." << endl;
+            }
+        } catch (const exception &e) {
+            cout << "Error: " << e.what() << endl;
+        }
+    }
+}
+
 void menuAdministrador(Administrador *admin, ListaGenerica<Usuario *> &usuarios) {
     bool cerrarSesion = false;
 
@@ -103,6 +203,7 @@ void menuAdministrador(Administrador *admin, ListaGenerica<Usuario *> &usuarios)
         cout << "2. Dar de baja un usuario" << endl;
         cout << "3. Modificar datos de un usuario" << endl;
         cout << "4. Listar usuarios" << endl;
+        cout << "9. Calculadora" << endl;
         cout << "0. Cerrar sesion" << endl;
 
         int opcion = leerEntero("Elige una opcion: ");
@@ -165,6 +266,10 @@ void menuAdministrador(Administrador *admin, ListaGenerica<Usuario *> &usuarios)
                     }
                     break;
 
+                case 9:
+                    menuCalculadora();
+                    break;
+
                 case 0:
                     cerrarSesion = true;
                     break;
@@ -190,6 +295,7 @@ void menuProfesor(Profesor *profesor, ListaGenerica<Usuario *> &usuarios) {
         cout << "2. Quitar un estudiante de mi clase" << endl;
         cout << "3. Poner una nota" << endl;
         cout << "4. Ver mi clase" << endl;
+        cout << "9. Calculadora" << endl;
         cout << "0. Cerrar sesion" << endl;
 
         int opcion = leerEntero("Elige una opcion: ");
@@ -242,6 +348,10 @@ void menuProfesor(Profesor *profesor, ListaGenerica<Usuario *> &usuarios) {
                     profesor->verClase();
                     break;
 
+                case 9:
+                    menuCalculadora();
+                    break;
+
                 case 0:
                     cerrarSesion = true;
                     break;
@@ -266,6 +376,7 @@ void menuEstudiante(Estudiante *estudiante) {
         cout << "1. Cargar un fichero en la mochila" << endl;
         cout << "2. Ver mi mochila" << endl;
         cout << "3. Ver mis datos y notas" << endl;
+        cout << "9. Calculadora" << endl;
         cout << "0. Cerrar sesion" << endl;
 
         int opcion = leerEntero("Elige una opcion: ");
@@ -288,6 +399,10 @@ void menuEstudiante(Estudiante *estudiante) {
                 case 3:
                     // Ver datos personales y notas
                     estudiante->mostrarDatos();
+                    break;
+
+                case 9:
+                    menuCalculadora();
                     break;
 
                 case 0:
@@ -343,7 +458,13 @@ int main() {
         }
     }
 
-    // Aqui ira la liberacion de memoria (delete)
+    // Liberar la memoria de todos los usuarios creados con new
+    while (usuarios.length() > 0) {
+        Usuario *u = usuarios.remove();
+        delete u;
+    }
+
+    cout << "Memoria liberada" << endl;
 
     return 0;
 }
