@@ -22,7 +22,7 @@ void Profesor::inscribir(Estudiante* e) {
     if (e->getProfesor() != nullptr) {
         throw std::runtime_error("El estudiante ya esta inscrito en otra clase.");
     }
-    
+
     clase.add(e);
     e->setProfesor(this);
 }
@@ -31,7 +31,7 @@ void Profesor::desinscribir(int id) {
     bool encontrado = false;
     for (int i = 0; i < clase.length(); i++) {
         Estudiante* e = clase.at(i);
-        if (e->getid() == id) {
+        if (e->getId() == id) {
             e->setProfesor(nullptr);
             clase.eliminar(i);
             encontrado = true;
@@ -47,7 +47,7 @@ void Profesor::ponerNota(int id, std::string asignatura, float nota) {
     bool encontrado = false;
     for (int i = 0; i < clase.length(); i++) {
         Estudiante* e = clase.at(i);
-        if (e->getid() == id) {
+        if (e->getId() == id) {
             e->ponerNota(asignatura, nota); 
             encontrado = true;
             break;
