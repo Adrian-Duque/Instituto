@@ -9,6 +9,9 @@
 #include "Estudiante.h"
 using namespace std;
 
+// ---- Calculadora: operaciones basicas ----
+// Son funciones sueltas y no una clase: la calculadora no guarda estado y solo
+// habria un objeto, asi que una clase no aportaria nada.
 double sumar(double a, double b) {
     return a + b;
 }
@@ -40,6 +43,9 @@ Matriz<double> *operarMatrices(const Matriz<double> &a, const Matriz<double> &b,
     }
 }
 
+// ---- Lectura validada de datos ----
+// Si el usuario escribe letras donde se espera un numero, cin queda en estado de error:
+// se limpia (clear), se descarta la linea (ignore) y se vuelve a pedir.
 int leerEntero(string mensaje) {
     int numero;
     cout << mensaje;
@@ -85,6 +91,7 @@ string leerTexto(string mensaje) {
     return texto;
 }
 
+// Devuelve el usuario con ese id o nullptr si no existe
 Usuario *buscarUsuario(ListaGenerica<Usuario *> &lista, int id) {
     for (int i = 0; i < lista.length(); i++) {
         Usuario *u = lista.at(i);
@@ -115,6 +122,7 @@ Matriz<double> *leerMatriz(string nombre) {
     return m;
 }
 
+// Menu de la calculadora (disponible para los tres roles con la opcion 9)
 void menuCalculadora() {
     bool volver = false;
 
@@ -131,6 +139,8 @@ void menuCalculadora() {
 
         int opcion = leerEntero("Elige una opcion: ");
 
+        // Cualquier excepcion de una opcion se muestra y se vuelve al menu,
+        // asi un error no cierra el programa
         try {
             switch (opcion) {
                 case 1: {
@@ -483,8 +493,12 @@ void menuEstudiante(Estudiante *estudiante) {
 }
 
 int main() {
+    // Lista de todos los usuarios. Guarda punteros (Usuario*) para poder tener
+    // estudiantes, profesores y administradores en la misma lista (polimorfismo).
+    // La lista vive en la pila de main; los usuarios, en el free store.
     ListaGenerica<Usuario *> usuarios;
 
+    // Primer administrador, para poder entrar y dar de alta al resto (recibe el id 1)
     Administrador *admin = new Administrador("Admin", "Principal");
     usuarios.add(admin);
 
@@ -506,6 +520,8 @@ int main() {
             } else {
                 cout << "Bienvenido, " << u->getNombre() << " (" << u->getRol() << ")" << endl;
 
+                // getRol es virtual: devuelve el rol del objeto real. Con el rol ya se sabe
+                // que tipo es, y static_cast convierte el Usuario* al puntero de su clase.
                 string rol = u->getRol();
 
                 if (rol == "Administrador") {
@@ -522,7 +538,8 @@ int main() {
         }
     }
 
-    // Liberar la memoria de todos los usuarios creados con new
+    // Liberar la memoria de todos los usuarios creados con new.
+    // delete ejecuta el destructor de cada clase (virtual) y no queda ninguna fuga.
     while (usuarios.length() > 0) {
         Usuario *u = usuarios.remove();
         delete u;

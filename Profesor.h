@@ -7,6 +7,7 @@
 
 class Estudiante;
 
+// Un profesor tiene una unica clase: la lista de sus estudiantes ("almacen personal").
 class Profesor : public Usuario {
 private:
     ListaGenerica<Estudiante*> clase; // Punteros: el profesor no es dueño de los estudiantes

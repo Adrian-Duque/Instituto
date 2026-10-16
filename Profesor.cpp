@@ -21,6 +21,9 @@ void Profesor::mostrarDatos() {
     Usuario::mostrarDatos();
 }
 
+// inscribir y desinscribir actualizan siempre los dos lados de la relacion:
+// la clase del profesor y el puntero "profesor" del estudiante. Asi se cumple que
+// un estudiante esta en una clase si y solo si su profesor no es nullptr.
 void Profesor::inscribir(Estudiante* e) {
     if (e == nullptr) {
         throw std::invalid_argument("El estudiante no puede ser nulo.");

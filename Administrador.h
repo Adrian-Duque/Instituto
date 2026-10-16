@@ -5,6 +5,8 @@
 #include "Usuario.h"
 #include "ListaGenerica.h"
 
+// Rol que gestiona los usuarios. La lista de usuarios no es suya (vive en main),
+// por eso se recibe por referencia en cada metodo en vez de copiarla.
 class Administrador : public Usuario {
 public:
     Administrador(const std::string& nombre, const std::string& apellido);

@@ -12,6 +12,8 @@ std::string Administrador::getRol() {
 
 void Administrador::darAlta(ListaGenerica<Usuario*>& lista, char rol,
                             const std::string& nombre, const std::string& apellido) {
+    // Se crea en el free store para que el usuario siga existiendo al salir del metodo;
+    // la lista solo guarda su direccion
     Usuario* nuevo = nullptr;
 
     if (rol == 'E') {

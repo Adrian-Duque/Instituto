@@ -32,6 +32,13 @@ public:
     Estudiante(const std::string& nombre, const std::string& apellido);
     ~Estudiante() override;
 
+    // Regla de los tres: como el estudiante es dueño de memoria dinamica (la mochila),
+    // una copia automatica copiaria solo el puntero y los dos objetos acabarian
+    // liberando la misma mochila (doble liberacion). Los estudiantes siempre se manejan
+    // con Estudiante*, asi que no hace falta copiarlos: se prohibe la copia.
+    Estudiante(const Estudiante&) = delete;
+    Estudiante& operator=(const Estudiante&) = delete;
+
     std::string getRol() override;
     void mostrarDatos() override;
 

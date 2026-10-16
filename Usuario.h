@@ -4,6 +4,9 @@
 #include <string>
 #include "ListaGenerica.h"
 
+// Clase base de los tres roles (Estudiante, Profesor y Administrador).
+// Guarda lo que tienen en comun: id, nombre y apellido.
+// Los atributos son protected para que las clases hijas puedan usarlos.
 class Usuario {
 protected:
     int id;
