@@ -257,7 +257,50 @@ void menuProfesor(Profesor *profesor, ListaGenerica<Usuario *> &usuarios) {
 
 
 void menuEstudiante(Estudiante *estudiante) {
-    cout << "Menu del estudiante (pendiente)" << endl;
+    // Interruptor y bucle del menu
+    bool cerrarSesion = false;
+
+    while (cerrarSesion == false) {
+        // Mostrar opciones y leer la elegida
+        cout << endl << "--- MENU ESTUDIANTE ---" << endl;
+        cout << "1. Cargar un fichero en la mochila" << endl;
+        cout << "2. Ver mi mochila" << endl;
+        cout << "3. Ver mis datos y notas" << endl;
+        cout << "0. Cerrar sesion" << endl;
+
+        int opcion = leerEntero("Elige una opcion: ");
+
+        try {
+            switch (opcion) {
+                case 1: {
+                    // Cargar un fichero .txt en la mochila
+                    string ruta = leerTexto("Ruta del fichero: ");
+                    estudiante->cargarFichero(ruta);
+                    cout << "Fichero cargado en la mochila." << endl;
+                    break;
+                }
+
+                case 2:
+                    // Ver el contenido de la mochila
+                    estudiante->verMochila();
+                    break;
+
+                case 3:
+                    // Ver datos personales y notas
+                    estudiante->mostrarDatos();
+                    break;
+
+                case 0:
+                    cerrarSesion = true;
+                    break;
+
+                default:
+                    cout << "Opcion no valida." << endl;
+            }
+        } catch (const exception &e) {
+            cout << "Error: " << e.what() << endl;
+        }
+    }
 }
 
 int main() {
