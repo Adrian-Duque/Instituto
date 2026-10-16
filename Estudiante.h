@@ -30,8 +30,8 @@ private:
 public:
     Estudiante(const std::string& nombre, const std::string& apellido);
 
-    std::string getRol() override;
-    void mostrarDatos() override;
+    std::string getRol();
+    void mostrarDatos();
 
     // Si la asignatura ya existe actualiza su nota; si no, la añade.
     // Lanza invalid_argument si la nota no esta entre 0 y 10.
