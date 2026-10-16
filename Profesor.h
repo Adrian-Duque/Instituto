@@ -14,10 +14,11 @@ private:
 public:
     // Constructor
     Profesor(std::string nombre, std::string apellido);
+    ~Profesor() override;
 
     // Métodos heredados de Usuario
-    std::string getRol();
-    void mostrarDatos();
+    std::string getRol() override;
+    void mostrarDatos() override;
 
     // Métodos de profesor 
     void inscribir(Estudiante* e);

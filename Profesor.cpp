@@ -5,6 +5,13 @@
 
 Profesor::Profesor(std::string nombre, std::string apellido) : Usuario(nombre, apellido) {}
 
+Profesor::~Profesor() {
+    // El profesor no es dueño de sus estudiantes: no se borran, solo se quedan sin clase
+    for (int i = 0; i < clase.length(); i++) {
+        clase.at(i)->setProfesor(nullptr);
+    }
+}
+
 std::string Profesor::getRol() {
     return "Profesor";
 }

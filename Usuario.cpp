@@ -1,12 +1,28 @@
 #include "Usuario.h"
 #include <iostream>
 
-int Usuario::siguienteId = 1;
+ListaGenerica<int> Usuario::idsEnUso;
 
 Usuario::Usuario(std::string nombre, std::string apellido) {
-    this->id = siguienteId++; // Asigna el ID actual y lo incrementa para el siguiente
+    // Se asigna el menor id libre (empezando en 1, el 0 es "salir"), asi se reutilizan los de las bajas.
+    // Si ya hay 50 usuarios, add lanza out_of_range y el objeto no llega a crearse.
+    int candidato = 1;
+    while (idsEnUso.buscar(candidato) != -1) {
+        candidato++;
+    }
+    idsEnUso.add(candidato);
+
+    this->id = candidato;
     this->nombre = nombre;
     this->apellido = apellido;
+}
+
+Usuario::~Usuario() {
+    // Al destruir el usuario su id queda libre para la siguiente alta
+    int pos = idsEnUso.buscar(id);
+    if (pos != -1) {
+        idsEnUso.eliminar(pos);
+    }
 }
 int Usuario::getId() const {
     return id;

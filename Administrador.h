@@ -9,7 +9,7 @@ class Administrador : public Usuario {
 public:
     Administrador(const std::string& nombre, const std::string& apellido);
 
-    std::string getRol();
+    std::string getRol() override;
 
     // rol: 'E' = Estudiante, 'P' = Profesor, 'A' = Administrador
     // Lanza runtime_error si el rol no es válido
