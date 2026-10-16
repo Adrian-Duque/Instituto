@@ -5,16 +5,16 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="instituto" value="«main»&lt;br&gt;Instituto (main.cpp)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="40" y="40" width="420" height="290" as="geometry" />
+          <mxGeometry x="40" y="40" width="420" height="196" as="geometry" />
         </mxCell>
-        <mxCell id="instituto_attr" value="- usuarios: ListaGenerica&amp;lt;Usuario*&amp;gt;&lt;br&gt;- calculadora: Calculadora" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="instituto" vertex="1">
+        <mxCell id="instituto_attr" value="- usuarios: ListaGenerica&amp;lt;Usuario*&amp;gt;&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="instituto" vertex="1">
           <mxGeometry y="40" width="420" height="42" as="geometry" />
         </mxCell>
         <mxCell id="instituto_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="instituto" vertex="1">
           <mxGeometry y="82" width="420" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="instituto_met" value="+ main(): int&lt;br&gt;&amp;nbsp; 1. Crea la lista de usuarios y un Administrador inicial (new)&lt;br&gt;&amp;nbsp; 2. Login por id → getRol()&lt;br&gt;&amp;nbsp; 3. Muestra el menú del rol y llama a sus métodos&lt;br&gt;&amp;nbsp; 4. try/catch de todas las excepciones&lt;br&gt;&amp;nbsp; 5. Al salir: delete de cada usuario&lt;br&gt;&lt;br&gt;+ sumar(a: double, b: double): double&lt;br style=&quot;border-color: rgb(218, 220, 224);&quot;&gt;+ restar(a: double, b: double): double&lt;br style=&quot;border-color: rgb(218, 220, 224);&quot;&gt;+ multiplicar(a: double, b: double): double&lt;br style=&quot;border-color: rgb(218, 220, 224);&quot;&gt;+ dividir(a: double, b: double): double {lanza si b = 0}&lt;br style=&quot;border-color: rgb(218, 220, 224);&quot;&gt;+ operarMatrices(a: const Matriz&amp;lt;double&amp;gt;&amp;amp;, b: const Matriz&amp;lt;double&amp;gt;&amp;amp;, op: char): Matriz&amp;lt;double&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="instituto" vertex="1">
-          <mxGeometry y="90" width="420" height="200" as="geometry" />
+        <mxCell id="instituto_met" value="+ main(): int&lt;br&gt;&amp;nbsp; 1. Crea la lista de usuarios y un Administrador inicial (new)&lt;br&gt;&amp;nbsp; 2. Login por id → getRol()&lt;br&gt;&amp;nbsp; 3. Muestra el menú del rol y llama a sus métodos&lt;br&gt;&amp;nbsp; 4. try/catch de todas las excepciones&lt;br&gt;&amp;nbsp; 5. Al salir: delete de cada usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="instituto" vertex="1">
+          <mxGeometry y="90" width="420" height="106" as="geometry" />
         </mxCell>
         <mxCell id="usuario" value="«abstract»&lt;br&gt;&lt;i&gt;Usuario&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="565" y="40" width="330" height="276" as="geometry" />
@@ -75,7 +75,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="admin" value="Administrador" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="910" y="670" width="520" height="170" as="geometry" />
+          <mxGeometry x="1000" y="400" width="520" height="170" as="geometry" />
         </mxCell>
         <mxCell id="admin_attr" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="admin" vertex="1">
           <mxGeometry y="30" width="520" height="10" as="geometry" />
@@ -111,7 +111,7 @@
           <mxGeometry y="80" width="300" height="122" as="geometry" />
         </mxCell>
         <mxCell id="matriz" value="Matriz&amp;lt;T&amp;gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="450" y="610" width="330" height="314" as="geometry" />
+          <mxGeometry x="1050" y="630" width="330" height="314" as="geometry" />
         </mxCell>
         <mxCell id="matriz_attr" value="- datos: T[MAX_DIM][MAX_DIM]&lt;br&gt;- filas: int&lt;br&gt;- columnas: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="matriz" vertex="1">
           <mxGeometry y="30" width="330" height="58" as="geometry" />
@@ -121,6 +121,18 @@
         </mxCell>
         <mxCell id="matriz_met" value="+ Matriz()&lt;br&gt;+ Matriz(filas: int, columnas: int)&lt;br&gt;+ set(i: int, j: int, valor: T): void&lt;br&gt;+ get(i: int, j: int): T&lt;br&gt;+ getFilas(): int&lt;br&gt;+ getColumnas(): int&lt;br&gt;+ imprimir(): void&lt;br&gt;+ sumar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ restar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ multiplicar(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ dividir(otra: const Matriz&amp;lt;T&amp;gt;&amp;amp;): Matriz&amp;lt;T&amp;gt;&lt;br&gt;+ traspuesta(): Matriz&amp;lt;T&amp;gt; {opcional}&lt;br&gt;+ determinante(): T {opcional}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="matriz" vertex="1">
           <mxGeometry y="96" width="330" height="218" as="geometry" />
+        </mxCell>
+        <mxCell id="calc" value="Calculadora" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="410" y="720" width="520" height="154" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_attr" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="calc" vertex="1">
+          <mxGeometry y="30" width="520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="calc" vertex="1">
+          <mxGeometry y="40" width="520" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="calc_met" value="+ sumar(a: double, b: double): double&lt;br&gt;+ restar(a: double, b: double): double&lt;br&gt;+ multiplicar(a: double, b: double): double&lt;br&gt;+ dividir(a: double, b: double): double {lanza si b = 0}&lt;br&gt;+ operarMatrices(a: const Matriz&amp;lt;double&amp;gt;&amp;amp;, b: const Matriz&amp;lt;double&amp;gt;&amp;amp;, op: char): Matriz&amp;lt;double&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="calc" vertex="1">
+          <mxGeometry y="48" width="520" height="106" as="geometry" />
         </mxCell>
         <mxCell id="comp_usuarios" value="" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.765;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="instituto" target="usuario" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -140,6 +152,15 @@
             <Array as="points">
               <mxPoint x="250" y="15" />
               <mxPoint x="1540" y="15" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_inst_calc" value="«usa»" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="instituto" target="calc" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="138.06" />
+              <mxPoint x="20" y="930.06" />
+              <mxPoint x="670" y="930.06" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -186,15 +207,8 @@
         <mxCell id="dep_gestiona" value="«gestiona»" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="admin" target="usuario" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dep_matriz" value="«usa»" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="instituto_met" target="matriz" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="574.8400000000001" y="720" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="20" y="230" />
-              <mxPoint x="20" y="954" />
-              <mxPoint x="615" y="954" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="dep_matriz" value="«usa»" style="endArrow=open;endSize=12;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.317;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="calc" target="matriz" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

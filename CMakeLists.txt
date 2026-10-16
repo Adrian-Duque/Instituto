@@ -8,6 +8,11 @@ add_executable(Instituto Main.cpp
         Matriz.h
         Administrador.cpp
         Administrador.h
+        Profesor.cpp
+        Profesor.h
+        Usuario.cpp
+        Usuario.h
+        ListaGenerica.h
         Fichero.cpp
         Fichero.h
         Estudiante.cpp
