@@ -21,17 +21,26 @@ private:
     ListaGenerica<std::string> asignaturas;
     ListaGenerica<float> notas;
 
-    // Por valor: el estudiante es dueño de sus ficheros (composicion).
-    ListaGenerica<Fichero> mochila;
+    // La mochila y cada fichero se crean con new (free store); el estudiante es su dueño
+    // y los libera en su destructor.
+    ListaGenerica<Fichero*>* mochila;
 
     // Por puntero: el profesor vive en la lista de usuarios, aqui solo se referencia.
     Profesor* profesor;
 
 public:
     Estudiante(const std::string& nombre, const std::string& apellido);
+    ~Estudiante() override;
 
-    std::string getRol();
-    void mostrarDatos();
+    // Regla de los tres: como el estudiante es dueño de memoria dinamica (la mochila),
+    // una copia automatica copiaria solo el puntero y los dos objetos acabarian
+    // liberando la misma mochila (doble liberacion). Los estudiantes siempre se manejan
+    // con Estudiante*, asi que no hace falta copiarlos: se prohibe la copia.
+    Estudiante(const Estudiante&) = delete;
+    Estudiante& operator=(const Estudiante&) = delete;
+
+    std::string getRol() override;
+    void mostrarDatos() override;
 
     // Si la asignatura ya existe actualiza su nota; si no, la añade.
     // Lanza invalid_argument si la nota no esta entre 0 y 10.
@@ -39,6 +48,9 @@ public:
 
     // Lanza runtime_error si el fichero no se puede abrir.
     void cargarFichero(const std::string& ruta);
+    // posicion empieza en 1, como se muestra en verMochila.
+    // Lanza out_of_range si la posicion no existe.
+    void quitarFichero(int posicion);
     void verMochila();
 
     Profesor* getProfesor() const;

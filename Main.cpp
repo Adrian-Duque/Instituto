@@ -9,6 +9,9 @@
 #include "Estudiante.h"
 using namespace std;
 
+// ---- Calculadora: operaciones basicas ----
+// Son funciones sueltas y no una clase: la calculadora no guarda estado y solo
+// habria un objeto, asi que una clase no aportaria nada.
 double sumar(double a, double b) {
     return a + b;
 }
@@ -28,17 +31,21 @@ double dividir(double a, double b) {
     return a / b;
 }
 
-Matriz<double> operarMatrices(const Matriz<double> &a, const Matriz<double> &b, char op) {
+// El resultado se guarda en el free store; quien llama debe liberarlo con delete
+Matriz<double> *operarMatrices(const Matriz<double> &a, const Matriz<double> &b, char op) {
     switch (op) {
-        case '+': return a.sumar(b);
-        case '-': return a.restar(b);
-        case '*': return a.multiplicar(b);
-        case '/': return a.dividir(b);
+        case '+': return new Matriz<double>(a.sumar(b));
+        case '-': return new Matriz<double>(a.restar(b));
+        case '*': return new Matriz<double>(a.multiplicar(b));
+        case '/': return new Matriz<double>(a.dividir(b));
         default:
             throw std::invalid_argument("Operacion no valida");
     }
 }
 
+// ---- Lectura validada de datos ----
+// Si el usuario escribe letras donde se espera un numero, cin queda en estado de error:
+// se limpia (clear), se descarta la linea (ignore) y se vuelve a pedir.
 int leerEntero(string mensaje) {
     int numero;
     cout << mensaje;
@@ -84,6 +91,7 @@ string leerTexto(string mensaje) {
     return texto;
 }
 
+// Devuelve el usuario con ese id o nullptr si no existe
 Usuario *buscarUsuario(ListaGenerica<Usuario *> &lista, int id) {
     for (int i = 0; i < lista.length(); i++) {
         Usuario *u = lista.at(i);
@@ -94,24 +102,27 @@ Usuario *buscarUsuario(ListaGenerica<Usuario *> &lista, int id) {
     return nullptr;
 }
 
-Matriz<double> leerMatriz(string nombre) {
+// La matriz se crea en el free store; quien llama debe liberarla con delete
+Matriz<double> *leerMatriz(string nombre) {
     cout << "Matriz " << nombre << endl;
     int filas = leerEntero("Numero de filas: ");
     int columnas = leerEntero("Numero de columnas: ");
 
-    Matriz<double> m(filas, columnas);
+    // Si las dimensiones no son validas el constructor lanza y new libera la memoria solo
+    Matriz<double> *m = new Matriz<double>(filas, columnas);
 
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
             cout << nombre << "[" << i << "][" << j << "] = ";
             double valor = leerDecimal("");
-            m.set(i, j, valor);
+            m->set(i, j, valor);
         }
     }
 
     return m;
 }
 
+// Menu de la calculadora (disponible para los tres roles con la opcion 9)
 void menuCalculadora() {
     bool volver = false;
 
@@ -122,10 +133,14 @@ void menuCalculadora() {
         cout << "3. Multiplicar" << endl;
         cout << "4. Dividir" << endl;
         cout << "5. Operar con matrices" << endl;
+        cout << "6. Traspuesta de una matriz" << endl;
+        cout << "7. Determinante de una matriz" << endl;
         cout << "0. Volver" << endl;
 
         int opcion = leerEntero("Elige una opcion: ");
 
+        // Cualquier excepcion de una opcion se muestra y se vuelve al menu,
+        // asi un error no cierra el programa
         try {
             switch (opcion) {
                 case 1: {
@@ -157,9 +172,7 @@ void menuCalculadora() {
                 }
 
                 case 5: {
-                    Matriz<double> a = leerMatriz("A");
-                    Matriz<double> b = leerMatriz("B");
-
+                    // Se elige la operacion antes de pedir las matrices
                     cout << "Operacion: 1 = Suma, 2 = Resta, 3 = Multiplicacion, 4 = Division" << endl;
                     int tipo = leerEntero("Operacion: ");
 
@@ -173,11 +186,62 @@ void menuCalculadora() {
                     } else if (tipo == 4) {
                         op = '/';
                     } else {
-                        op = 'X';
+                        throw std::invalid_argument("Operacion no valida");
                     }
 
-                    cout << "Resultado:" << endl;
-                    operarMatrices(a, b, op).imprimir();
+                    // Matrices y resultado en el free store. Si algo lanza una excepcion
+                    // se libera lo que ya se habia creado antes de relanzarla.
+                    Matriz<double> *a = nullptr;
+                    Matriz<double> *b = nullptr;
+                    Matriz<double> *resultado = nullptr;
+                    try {
+                        a = leerMatriz("A");
+                        b = leerMatriz("B");
+                        resultado = operarMatrices(*a, *b, op);
+                        cout << "Resultado:" << endl;
+                        resultado->imprimir();
+                    } catch (...) {
+                        delete resultado;
+                        delete b;
+                        delete a;
+                        throw;
+                    }
+                    delete resultado;
+                    delete b;
+                    delete a;
+                    break;
+                }
+
+                case 6: {
+                    Matriz<double> *a = nullptr;
+                    Matriz<double> *traspuesta = nullptr;
+                    try {
+                        a = leerMatriz("A");
+                        traspuesta = new Matriz<double>(a->traspuesta());
+                        cout << "Traspuesta:" << endl;
+                        traspuesta->imprimir();
+                    } catch (...) {
+                        delete traspuesta;
+                        delete a;
+                        throw;
+                    }
+                    delete traspuesta;
+                    delete a;
+                    break;
+                }
+
+                case 7: {
+                    Matriz<double> *a = nullptr;
+                    try {
+                        a = leerMatriz("A");
+                        // Lanza invalid_argument si la matriz no es cuadrada
+                        double determinante = a->determinante();
+                        cout << "Determinante: " << determinante << endl;
+                    } catch (...) {
+                        delete a;
+                        throw;
+                    }
+                    delete a;
                     break;
                 }
 
@@ -375,7 +439,8 @@ void menuEstudiante(Estudiante *estudiante) {
         cout << endl << "--- MENU ESTUDIANTE ---" << endl;
         cout << "1. Cargar un fichero en la mochila" << endl;
         cout << "2. Ver mi mochila" << endl;
-        cout << "3. Ver mis datos y notas" << endl;
+        cout << "3. Eliminar un fichero de la mochila" << endl;
+        cout << "4. Ver mis datos y notas" << endl;
         cout << "9. Calculadora" << endl;
         cout << "0. Cerrar sesion" << endl;
 
@@ -396,7 +461,16 @@ void menuEstudiante(Estudiante *estudiante) {
                     estudiante->verMochila();
                     break;
 
-                case 3:
+                case 3: {
+                    // Eliminar un fichero: se muestra la mochila numerada y se elige cual quitar
+                    estudiante->verMochila();
+                    int posicion = leerEntero("Numero del fichero a eliminar: ");
+                    estudiante->quitarFichero(posicion);
+                    cout << "Fichero eliminado de la mochila." << endl;
+                    break;
+                }
+
+                case 4:
                     // Ver datos personales y notas
                     estudiante->mostrarDatos();
                     break;
@@ -419,8 +493,12 @@ void menuEstudiante(Estudiante *estudiante) {
 }
 
 int main() {
+    // Lista de todos los usuarios. Guarda punteros (Usuario*) para poder tener
+    // estudiantes, profesores y administradores en la misma lista (polimorfismo).
+    // La lista vive en la pila de main; los usuarios, en el free store.
     ListaGenerica<Usuario *> usuarios;
 
+    // Primer administrador, para poder entrar y dar de alta al resto (recibe el id 1)
     Administrador *admin = new Administrador("Admin", "Principal");
     usuarios.add(admin);
 
@@ -442,6 +520,8 @@ int main() {
             } else {
                 cout << "Bienvenido, " << u->getNombre() << " (" << u->getRol() << ")" << endl;
 
+                // getRol es virtual: devuelve el rol del objeto real. Con el rol ya se sabe
+                // que tipo es, y static_cast convierte el Usuario* al puntero de su clase.
                 string rol = u->getRol();
 
                 if (rol == "Administrador") {
@@ -458,7 +538,8 @@ int main() {
         }
     }
 
-    // Liberar la memoria de todos los usuarios creados con new
+    // Liberar la memoria de todos los usuarios creados con new.
+    // delete ejecuta el destructor de cada clase (virtual) y no queda ninguna fuga.
     while (usuarios.length() > 0) {
         Usuario *u = usuarios.remove();
         delete u;

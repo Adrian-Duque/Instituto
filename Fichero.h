@@ -13,12 +13,10 @@ private:
     std::string contenido;
 
 public:
-    // Constructor por defecto: lo necesita el array interno de ListaGenerica<Fichero>.
-    Fichero();
     Fichero(const std::string& ruta);
 
     // Lee el .txt de "ruta" y lo guarda en "contenido".
-    // Lanza runtime_error si no se puede abrir.
+    // Lanza invalid_argument si la ruta no es un .txt y runtime_error si no se puede abrir.
     void cargar();
     void mostrar() const;
 };

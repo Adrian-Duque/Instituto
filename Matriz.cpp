@@ -4,8 +4,12 @@
 
 #include "Matriz.h"
 
+#include <cmath>
 #include <iostream>
 #include <stdexcept>
+
+// Por debajo de este valor un pivote se considera 0 (errores de redondeo de double)
+const double TOLERANCIA = 1e-9;
 
 template <typename T>
 Matriz<T>::Matriz() : datos(), filas(0), columnas(0) {}
@@ -119,11 +123,15 @@ Matriz<T> Matriz<T>::dividir(const Matriz<T>& otra) const {
         }
     }
     for (int c = 0; c < n; c++) {
+        // Pivoteo parcial: se usa la fila con el valor mas grande en esta columna.
+        // Con decimales un 0 puede quedar como 1e-17, por eso se compara con una tolerancia.
         int pivote = c;
-        while (pivote < n && a[pivote][c] == 0) {
-            pivote++;
+        for (int i = c + 1; i < n; i++) {
+            if (std::fabs(a[i][c]) > std::fabs(a[pivote][c])) {
+                pivote = i;
+            }
         }
-        if (pivote == n) {
+        if (std::fabs(a[pivote][c]) < TOLERANCIA) {
             throw std::invalid_argument("La matriz divisor no es invertible");
         }
         for (int j = 0; j < 2 * n; j++) {
@@ -181,12 +189,15 @@ T Matriz<T>::determinante() const {
     }
     double det = 1.0;
     for (int c = 0; c < n; c++) {
+        // Pivoteo parcial, igual que en dividir
         int pivote = c;
-        while (pivote < n && a[pivote][c] == 0) {
-            pivote++;
+        for (int i = c + 1; i < n; i++) {
+            if (std::fabs(a[i][c]) > std::fabs(a[pivote][c])) {
+                pivote = i;
+            }
         }
-        if (pivote == n) {
-            return T();
+        if (std::fabs(a[pivote][c]) < TOLERANCIA) {
+            return T(); // columna sin pivote: la matriz es singular y su determinante es 0
         }
         if (pivote != c) {
             for (int j = 0; j < n; j++) {

@@ -7,6 +7,7 @@
 
 class Estudiante;
 
+// Un profesor tiene una unica clase: la lista de sus estudiantes ("almacen personal").
 class Profesor : public Usuario {
 private:
     ListaGenerica<Estudiante*> clase; // Punteros: el profesor no es dueño de los estudiantes
@@ -14,10 +15,11 @@ private:
 public:
     // Constructor
     Profesor(std::string nombre, std::string apellido);
+    ~Profesor() override;
 
     // Métodos heredados de Usuario
-    std::string getRol();
-    void mostrarDatos();
+    std::string getRol() override;
+    void mostrarDatos() override;
 
     // Métodos de profesor 
     void inscribir(Estudiante* e);

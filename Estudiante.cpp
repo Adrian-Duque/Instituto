@@ -3,12 +3,29 @@
 //
 
 #include "Estudiante.h"
+#include "Profesor.h" // en el .cpp si se necesita la clase completa para llamar a desinscribir
 #include <iostream>
 #include <stdexcept>
 
 Estudiante::Estudiante(const std::string& nombre, const std::string& apellido)
     : Usuario(nombre, apellido) {
     profesor = nullptr; // Al darse de alta todavia no esta en ninguna clase
+    mochila = new ListaGenerica<Fichero*>();
+}
+
+Estudiante::~Estudiante() {
+    // Si esta en una clase, se quita de ella para que el profesor no se quede
+    // con un puntero a un estudiante que ya no existe (puntero colgante).
+    // profesor != nullptr solo cuando esta inscrito, asi que desinscribir siempre lo encuentra.
+    if (profesor != nullptr) {
+        profesor->desinscribir(id);
+    }
+
+    // Se libera cada fichero y despues la propia mochila
+    while (mochila->length() > 0) {
+        delete mochila->remove();
+    }
+    delete mochila;
 }
 
 std::string Estudiante::getRol() {
@@ -46,21 +63,32 @@ void Estudiante::ponerNota(const std::string& asignatura, float nota) {
 }
 
 void Estudiante::cargarFichero(const std::string& ruta) {
-    Fichero nuevo(ruta);
-    nuevo.cargar();    // Si falla lanza la excepcion y no se añade nada a la mochila
-    mochila.add(nuevo);
+    Fichero* nuevo = new Fichero(ruta);
+    try {
+        nuevo->cargar();    // Si falla lanza la excepcion y no se añade nada a la mochila
+        mochila->add(nuevo);
+    } catch (...) {
+        delete nuevo;       // no se ha guardado: se libera para que no haya fuga
+        throw;
+    }
+}
+
+void Estudiante::quitarFichero(int posicion) {
+    Fichero* quitado = mochila->eliminar(posicion - 1);
+    delete quitado;
 }
 
 void Estudiante::verMochila() {
     std::cout << "Mochila de " << nombre << " " << apellido
-              << " (" << mochila.length() << " ficheros)" << std::endl;
+              << " (" << mochila->length() << " ficheros)" << std::endl;
 
-    if (mochila.length() == 0) {
+    if (mochila->length() == 0) {
         std::cout << "  La mochila esta vacia" << std::endl;
         return;
     }
-    for (int i = 0; i < mochila.length(); i++) {
-        mochila.at(i).mostrar();
+    for (int i = 0; i < mochila->length(); i++) {
+        std::cout << "[" << i + 1 << "] ";
+        mochila->at(i)->mostrar();
     }
 }
 

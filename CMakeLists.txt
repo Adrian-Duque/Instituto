@@ -18,3 +18,9 @@ add_executable(Instituto Main.cpp
         Estudiante.cpp
         Estudiante.h
 )
+
+# CLion ejecuta el programa desde la carpeta de compilacion (cmake-build-debug):
+# se copia ahi la carpeta ficheros para que "ficheros/actividad1.txt" se encuentre.
+add_custom_command(TARGET Instituto POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/ficheros $<TARGET_FILE_DIR:Instituto>/ficheros)

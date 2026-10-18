@@ -12,6 +12,8 @@ std::string Administrador::getRol() {
 
 void Administrador::darAlta(ListaGenerica<Usuario*>& lista, char rol,
                             const std::string& nombre, const std::string& apellido) {
+    // Se crea en el free store para que el usuario siga existiendo al salir del metodo;
+    // la lista solo guarda su direccion
     Usuario* nuevo = nullptr;
 
     if (rol == 'E') {
@@ -44,27 +46,11 @@ void Administrador::darBaja(ListaGenerica<Usuario*>& lista, int id) {
         throw std::runtime_error("El id no existe");
     }
 
-    Usuario* u = lista.at(pos);
-
-    if (u->getRol() == "Estudiante") {
-        Estudiante* e = static_cast<Estudiante*>(u);
-        if (e->getProfesor() != nullptr) {
-            e->getProfesor()->desinscribir(id);
-        }
-    } else if (u->getRol() == "Profesor") {
-        Profesor* p = static_cast<Profesor*>(u);
-        for (int i = 0; i < lista.length(); i++) {
-            if (lista.at(i)->getRol() == "Estudiante") {
-                Estudiante* e = static_cast<Estudiante*>(lista.at(i));
-                if (e->getProfesor() == p) {
-                    e->setProfesor(nullptr);
-                }
-            }
-        }
-    }
-
+    // Se saca de la lista y se elimina de memoria. Al ser el destructor virtual, delete ejecuta
+    // el de la clase real: ~Estudiante o ~Profesor deshacen la relacion profesor-alumno
+    // y despues ~Usuario deja libre el id.
+    Usuario* u = lista.eliminar(pos);
     delete u;
-    lista.eliminar(pos);
 }
 
 void Administrador::modificarDatos(ListaGenerica<Usuario*>& lista, int id,
